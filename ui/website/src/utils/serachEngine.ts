@@ -28,11 +28,6 @@ export const generateSearchEngineCard = (searchString: string) => {
   ]
   return result;
 }
-
-const searchBaidu = (q: string) => {
-  return `https://www.baidu.com/s?wd=${q}`
-}
-
 const searchGoogle = (q: string) => {
   return `https://www.google.com/search?q=${q}`
 }
@@ -40,3 +35,8 @@ const searchGoogle = (q: string) => {
 const searchBing = (q: string) => {
   return `https://cn.bing.com/search?q=${q}`
 }
+
+const searchBaidu = (q: string) => {
+  return `https://www.baidu.com/s?wd=${q}`
+}
+
