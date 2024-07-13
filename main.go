@@ -380,6 +380,7 @@ func main() {
 
 	router.GET("/manifest.json", ManifastHanlder)
 	router.Use(Serve("/", BinaryFileSystem(fs, "public")))
+	router.GET("/api/img", getLogoImgHandler) //不需要鉴权
 	// router.Use(static.Serve("/", static.LocalFile("./public", true)))
 	api := router.Group("/api")
 	api.Use(JWTMiddleware())
@@ -390,7 +391,6 @@ func main() {
 
 		api.POST("/login", LoginHandler)
 		api.GET("/logout", LogoutHandler)
-		api.GET("/img", getLogoImgHandler)
 		// 管理员用的
 		admin := api.Group("/admin")
 		{
