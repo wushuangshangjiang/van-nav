@@ -382,9 +382,10 @@ func main() {
 	router.Use(Serve("/", BinaryFileSystem(fs, "public")))
 	// router.Use(static.Serve("/", static.LocalFile("./public", true)))
 	api := router.Group("/api")
+	api.Use(JWTMiddleware())
 	{
 		// 获取数据的路由
-		api.GET("/", GetAllHandler).Use(JWTMiddleware())
+		api.GET("/", GetAllHandler)
 		// 获取用户信息
 
 		api.POST("/login", LoginHandler)
@@ -392,7 +393,6 @@ func main() {
 		api.GET("/img", getLogoImgHandler)
 		// 管理员用的
 		admin := api.Group("/admin")
-		admin.Use(JWTMiddleware())
 		{
 			admin.POST("/apiToken", AddApiTokenHandler)
 			admin.DELETE("/apiToken/:id", DeleteApiTokenHandler)
