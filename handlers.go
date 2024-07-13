@@ -139,6 +139,7 @@ func GetAllHandler(c *gin.Context) {
 	tools := getAllTool(db)
 	catelogs := getAllCatelog(db)
 	setting := getSetting(db)
+	tokens := getApiTokens(db)
 	c.JSON(200, gin.H{
 		"success": true,
 		"data": gin.H{
@@ -146,6 +147,7 @@ func GetAllHandler(c *gin.Context) {
 			"catelogs": catelogs,
 			"setting":  setting,
 		},
+		"tokens": tokens,
 	})
 }
 
