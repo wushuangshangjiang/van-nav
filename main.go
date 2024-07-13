@@ -384,7 +384,7 @@ func main() {
 	api := router.Group("/api")
 	{
 		// 获取数据的路由
-		api.GET("/", GetAllHandler)
+		api.GET("/", GetAllHandler).Use(JWTMiddleware())
 		// 获取用户信息
 
 		api.POST("/login", LoginHandler)
