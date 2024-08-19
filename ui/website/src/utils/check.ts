@@ -8,4 +8,4 @@ export const getLogoUrl = (url: string) => {
   } else {
     return url;
   }
-} 
+}

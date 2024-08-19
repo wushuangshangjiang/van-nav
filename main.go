@@ -383,13 +383,12 @@ func main() {
 	router.GET("/api/img", getLogoImgHandler) //不需要鉴权
 	// router.Use(static.Serve("/", static.LocalFile("./public", true)))
 	api := router.Group("/api")
+	api.POST("/login", LoginHandler) //不需要鉴权
 	api.Use(JWTMiddleware())
 	{
 		// 获取数据的路由
 		api.GET("/", GetAllHandler)
 		// 获取用户信息
-
-		api.POST("/login", LoginHandler)
 		api.GET("/logout", LogoutHandler)
 		// 管理员用的
 		admin := api.Group("/admin")
